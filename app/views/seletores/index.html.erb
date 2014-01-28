@@ -1,0 +1,22 @@
+<h1>Seletor de dados</h1>
+
+<%= form_for Seletor.new, url: teste_path do |f| %>
+<div>
+  <%= f.label :descricao, "Descrição" %><br/>
+  <%= f.text_field :descricao %>
+</div>
+<br/><br/>
+<div>
+  <%= f.label :codigo, "Código" %><br/>
+  <%= f.text_area :codigo, cols: 80, rows: 20 %>
+</div>
+<br/><br/>
+<div>
+  <%= f.submit "Ok" %>
+</div>
+
+<% end %>
+
+<div id='resultados'>
+		<%= render :partial => 'resultados' %>
+</div>

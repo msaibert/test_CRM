@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: test_CRM_development
+  username: postgres
+  password: postgres
+
+test:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: test_CRM_test
+  username: postgres
+  password: postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: test_CRM_production
+  pool: 5
+  username: Auditoria
+  password:
