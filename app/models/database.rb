@@ -7,11 +7,11 @@ class Database < ActiveRecord::Base
 	end
 
 	after_initialize do
-		self.config = eval(self.config)
+		self.config = eval(self.config || '')
 	end
 
 	before_save do
-		self.config = self.config.to_s || make_config.to_s
+		self.config = make_config.to_s if self.config.blank?
 	end
 
 	def make_config
