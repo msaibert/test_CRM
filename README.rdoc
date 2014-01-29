@@ -1,28 +1,20 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Crie a database do sistema CRM teste com o comando já conhecido rake db:create e execute as migrations com o comando rake db:migrate
 
-Things you may want to cover:
+* Não há nesse projeto beta a possibilidade de cadastrar databases por tela. Será necessário cadastrar as databases do sistema cliente através do terminal, criando um objeto da classe "Database". É necessário informar os atributos 'adapter', 'host', 'encoding', 'database', 'username', 'password'. Ainda há nessa classe o atributo config, que, caso não informado, tomará por padrão o retorno do metodo make_config*. 
 
-* Ruby version
+* Após o cadastro de ao menos uma database, inicie o servidor do rails e acesse o endereço pelo navegador. Será exibida uma tela de configuração de seletor. No campo seletor será possível fazer uso de qualquer código Ruby, fazendo uso inclusive dos recursos sistema CRM. Para fazer uso de objetos ActiveRecord das databases configuradas, será necessário chamar o metodo "make_classes(Database)". O metodo make_classes irá gerar todas as classes configuradas no campos config da Database passada por parametro. Abaixo um exemplo de seletor utilizando o banco de dados do auditoria:
 
-* System dependencies
+							
 
-* Configuration
+							make_classes Database.find_by_descricao('Auditoria_development')
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+							Pessoa.all.collect do |pessoa|
+							    [pessoa.nome, pessoa.email]
+							end
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Clicando em Ok, você será redirecionado para uma tela que fará a exibição dos dados retornados pelo seu código.
+
+* No seletor os objetos gerados possuem seus relacionamentos, desde que gerados corretamente no campo config do objeto database.
